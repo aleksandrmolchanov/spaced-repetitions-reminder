@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('wordsets', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_puzzle_english');
+            $table->integer('id_puzzle_english')->unique();
             $table->string('title');
             $table->dateTimeTz('learnt_at')->nullable()->default(null);
         });

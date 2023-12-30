@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -21,7 +22,16 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        'today' => now()->toFormattedDateString(),
+        'wordsets' => [
+            'today' => DB::table('wordsets')->whereNull('learnt_at')->orderBy('id')->first(),
+            '1day' => DB::table('wordsets')->whereDate('learnt_at', now()->subDay()->toDateString())->first(),
+            '3days' => DB::table('wordsets')->whereDate('learnt_at', now()->subDays(4)->toDateString())->first(),
+            '7days' => DB::table('wordsets')->whereDate('learnt_at', now()->subDays(11)->toDateString())->first(),
+            '16days' => DB::table('wordsets')->whereDate('learnt_at', now()->subDays(27)->toDateString())->first(),
+        ]
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

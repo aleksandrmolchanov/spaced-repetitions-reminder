@@ -133,10 +133,10 @@ const collections = ref(props.wordsets)
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
                         </div>
-                        <div :class="collections['today'] && collections['today'].repeat_1hour ? collections['today'].repeat_8hours ? 'bg-gray-100' : 'bg-emerald-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                        <div :class="collections['today'] && collections['today'].repeat_1hour && collections['today'].learnt_at ? collections['today'].repeat_8hours ? 'bg-gray-100' : 'bg-emerald-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 8 hours</div>
-                                <template v-if="collections['today'] && collections['today'].repeat_1hour">
+                                <template v-if="collections['today'] && collections['today'].repeat_1hour && collections['today'].learnt_at">
                                     <label class="relative inline-flex items-center cursor-pointer">
                                         <input v-model="collections['today'].repeat_8hours" type="checkbox" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>

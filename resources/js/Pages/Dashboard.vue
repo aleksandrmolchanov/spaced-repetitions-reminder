@@ -1,10 +1,123 @@
 <script setup>
-import { ref} from 'vue';
+import { reactive, watch } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 
 const props = defineProps(['wordsets', 'today'])
-const collections = ref(props.wordsets)
+const collections = reactive(props.wordsets)
+
+if(collections['16days']) {
+    watch(
+        () => collections['16days'].repeat_16days,
+        (value) => {
+            router.patch(route('wordset', {id: collections['16days'].id}), {
+                step: '16days',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+        }
+    )
+}
+
+if(collections['7days']) {
+    watch(
+        () => collections['7days'].repeat_7days,
+        (value) => {
+            router.patch(route('wordset', {id: collections['7days'].id}), {
+                step: '7days',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+        }
+    )
+}
+
+if(collections['3days']) {
+    watch(
+        () => collections['3days'].repeat_3days,
+        (value) => {
+            router.patch(route('wordset', {id: collections['3days'].id}), {
+                step: '3days',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+        }
+    )
+}
+
+if(collections['1day']) {
+    watch(
+        () => collections['1day'].repeat_1day,
+        (value) => {
+            router.patch(route('wordset', {id: collections['1day'].id}), {
+                step: '1day',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+        }
+    )
+}
+
+if(collections['today']) {
+    watch(
+        () => collections['today'].learnt_at,
+        (value) => {
+            router.patch(route('wordset', {id: collections['today'].id}), {
+                step: 'learnt',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+            if(value === 0){
+                collections['today'].repeat_1hour = false
+                collections['today'].repeat_8hours = false
+            }
+        }
+    )
+}
+
+if(collections['today']) {
+    watch(
+        () => collections['today'].repeat_1hour,
+        (value) => {
+            router.patch(route('wordset', {id: collections['today'].id}), {
+                step: 'repeat_1hour',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+            if(value === false){
+                collections['today'].repeat_8hours = false
+            }
+        }
+    )
+}
+
+if(collections['today']) {
+    watch(
+        () => collections['today'].repeat_8hours,
+        (value) => {
+            router.patch(route('wordset', {id: collections['today'].id}), {
+                step: 'repeat_8hours',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+        }
+    )
+}
+
 </script>
 
 <template>
@@ -24,7 +137,7 @@ const collections = ref(props.wordsets)
                                 <div class="">Repeat after 16 days</div>
                                 <template v-if="collections['16days']">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input v-model="collections['16days'].repeat_16days" type="checkbox" value="" class="sr-only peer">
+                                        <input v-model="collections['16days'].repeat_16days" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
                                     </label>
                                     <div v-if="collections['16days'].repeat_16days">Done</div>
@@ -43,7 +156,7 @@ const collections = ref(props.wordsets)
                                 <div class="">Repeat after 7 days</div>
                                 <template v-if="collections['7days']">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input v-model="collections['7days'].repeat_7days" type="checkbox" value="" class="sr-only peer">
+                                        <input v-model="collections['7days'].repeat_7days" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
                                     </label>
                                     <div v-if="collections['7days'].repeat_7days">Done</div>
@@ -62,7 +175,7 @@ const collections = ref(props.wordsets)
                                 <div class="">Repeat after 3 days</div>
                                 <template v-if="collections['3days']">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input v-model="collections['3days'].repeat_3days" type="checkbox" value="" class="sr-only peer">
+                                        <input v-model="collections['3days'].repeat_3days" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
                                     </label>
                                     <div v-if="collections['3days'].repeat_3days">Done</div>
@@ -81,7 +194,7 @@ const collections = ref(props.wordsets)
                                 <div class="">Repeat after 1 day</div>
                                 <template v-if="collections['1day']">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input v-model="collections['1day'].repeat_1day" type="checkbox" value="" class="sr-only peer">
+                                        <input v-model="collections['1day'].repeat_1day" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
                                     </label>
                                     <div v-if="collections['1day'].repeat_1day">Done</div>
@@ -100,7 +213,7 @@ const collections = ref(props.wordsets)
                                 <div class="">Learn today</div>
                                 <template v-if="collections['today']">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input v-model="collections['today'].learnt_at" type="checkbox" value="" class="sr-only peer">
+                                        <input v-model="collections['today'].learnt_at" type="checkbox" :true-value="collections['today'].learnt_at ?? 1" :false-value="null" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-lime-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-lime-500"></div>
                                     </label>
                                     <div v-if="collections['today'].learnt_at">Done</div>
@@ -119,7 +232,7 @@ const collections = ref(props.wordsets)
                                 <div class="">Repeat after 1 hour</div>
                                 <template v-if="collections['today'] && collections['today'].learnt_at">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input v-model="collections['today'].repeat_1hour" type="checkbox" value="" class="sr-only peer">
+                                        <input v-model="collections['today'].repeat_1hour" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
                                     </label>
                                     <div v-if="collections['today'].repeat_1hour">Done</div>
@@ -138,7 +251,7 @@ const collections = ref(props.wordsets)
                                 <div class="">Repeat after 8 hours</div>
                                 <template v-if="collections['today'] && collections['today'].repeat_1hour && collections['today'].learnt_at">
                                     <label class="relative inline-flex items-center cursor-pointer">
-                                        <input v-model="collections['today'].repeat_8hours" type="checkbox" value="" class="sr-only peer">
+                                        <input v-model="collections['today'].repeat_8hours" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
                                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
                                     </label>
                                     <div v-if="collections['today'].repeat_8hours">Done</div>

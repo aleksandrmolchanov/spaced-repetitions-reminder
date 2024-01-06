@@ -143,7 +143,7 @@ if(collections['today']) {
                                     <div v-if="collections['16days'].repeat_16days">Done</div>
                                 </template>
                             </div>
-                            <div class="mt-4 flex gap-x-4">
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['16days']">
                                     <div class="font-semibold">Collection «{{ collections['16days'].title }}»</div>
                                     <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['16days'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['16days'].id_puzzle_english }}</a>
@@ -162,7 +162,7 @@ if(collections['today']) {
                                     <div v-if="collections['7days'].repeat_7days">Done</div>
                                 </template>
                             </div>
-                            <div class="mt-4 flex gap-x-4">
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['7days']">
                                     <div class="font-semibold">Collection «{{ collections['7days'].title }}»</div>
                                     <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['7days'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['7days'].id_puzzle_english }}</a>
@@ -181,7 +181,7 @@ if(collections['today']) {
                                     <div v-if="collections['3days'].repeat_3days">Done</div>
                                 </template>
                             </div>
-                            <div class="mt-4 flex gap-x-4">
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['3days']">
                                     <div class="font-semibold">Collection «{{ collections['3days'].title }}»</div>
                                     <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['3days'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + wordsets['3days'].id_puzzle_english }}</a>
@@ -200,7 +200,7 @@ if(collections['today']) {
                                     <div v-if="collections['1day'].repeat_1day">Done</div>
                                 </template>
                             </div>
-                            <div class="mt-4 flex gap-x-4">
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['1day']">
                                     <div class="font-semibold">Collection «{{ collections['1day'].title }}»</div>
                                     <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['1day'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['1day'].id_puzzle_english }}</a>
@@ -219,7 +219,7 @@ if(collections['today']) {
                                     <div v-if="collections['today'].learnt_at">Done</div>
                                 </template>
                             </div>
-                            <div class="mt-4 flex gap-x-4">
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['today']">
                                     <div class="font-semibold">Collection «{{ collections['today'].title }}»</div>
                                     <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english + '&view=cards'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english + '&view=cards' }}</a>
@@ -238,7 +238,7 @@ if(collections['today']) {
                                     <div v-if="collections['today'].repeat_1hour">Done</div>
                                 </template>
                             </div>
-                            <div class="mt-4 flex gap-x-4">
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['today']">
                                     <div class="font-semibold">Collection «{{ collections['today'].title }}»</div>
                                     <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english }}</a>
@@ -257,7 +257,7 @@ if(collections['today']) {
                                     <div v-if="collections['today'].repeat_8hours">Done</div>
                                 </template>
                             </div>
-                            <div class="mt-4 flex gap-x-4">
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['today']">
                                     <div class="font-semibold">Collection «{{ collections['today'].title }}»</div>
                                     <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english }}</a>

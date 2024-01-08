@@ -13,7 +13,7 @@ class ParseWordsets extends Command
      *
      * @var string
      */
-    protected $signature = 'app:parse-wordsets';
+    protected $signature = 'app:parse-wordsets {user_id?}';
 
     /**
      * The console command description.
@@ -34,6 +34,7 @@ class ParseWordsets extends Command
         {
             $wordsets[] = [
                 'id_puzzle_english' => $wordset['id'],
+                'user_id' => $this->argument('user_id') ?? null,
                 'title' => $wordset['title_ru']
             ];
         }

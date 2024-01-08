@@ -15,12 +15,12 @@ class WordsetsController extends Controller
         return Inertia::render('Dashboard', [
             'today' => now()->toFormattedDateString(),
             'wordsets' => [
-                'today' => DB::table('wordsets')->whereDate('learnt_at', now()->toDateString())->first() ??
-                    DB::table('wordsets')->whereNull('learnt_at')->orderBy('id')->first(),
-                '1day' => DB::table('wordsets')->whereDate('learnt_at', now()->subDay()->toDateString())->first(),
-                '3days' => DB::table('wordsets')->whereDate('learnt_at', now()->subDays(4)->toDateString())->first(),
-                '7days' => DB::table('wordsets')->whereDate('learnt_at', now()->subDays(11)->toDateString())->first(),
-                '16days' => DB::table('wordsets')->whereDate('learnt_at', now()->subDays(27)->toDateString())->first(),
+                'today' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->toDateString())->first() ??
+                    DB::table('wordsets')->where('user_id', auth()->user()->id)->whereNull('learnt_at')->orderBy('id')->first(),
+                '1day' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDay()->toDateString())->first(),
+                '3days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(4)->toDateString())->first(),
+                '7days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(11)->toDateString())->first(),
+                '16days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(27)->toDateString())->first(),
             ]
         ]);
     }
@@ -64,7 +64,10 @@ class WordsetsController extends Controller
         }
 
         DB::table('wordsets')
-            ->where('id', $id)
+            ->where([
+                ['id', '=', $id],
+                ['user_id', '=', auth()->user()->id]
+            ])
             ->update($update);
 
         return redirect()->back();

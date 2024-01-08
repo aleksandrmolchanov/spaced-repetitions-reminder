@@ -72,7 +72,7 @@ if(collections['today']) {
         (value) => {
             router.patch(route('wordset', {id: collections['today'].id}), {
                 step: 'learnt',
-                value
+                value: Number(value)
             }, {
                 preserveState: true,
                 preserveScroll: true

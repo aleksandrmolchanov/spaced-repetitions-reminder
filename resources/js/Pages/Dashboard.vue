@@ -146,7 +146,7 @@ if(collections['today']) {
                             <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['16days']">
                                     <div class="font-semibold">Collection «{{ collections['16days'].title }}»</div>
-                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['16days'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['16days'].id_puzzle_english }}</a>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['16days'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['16days'].id_puzzle_english + '&shuffle' }}</a>
                                 </template>
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
@@ -165,7 +165,7 @@ if(collections['today']) {
                             <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['7days']">
                                     <div class="font-semibold">Collection «{{ collections['7days'].title }}»</div>
-                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['7days'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['7days'].id_puzzle_english }}</a>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['7days'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['7days'].id_puzzle_english + '&shuffle' }}</a>
                                 </template>
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
@@ -184,7 +184,7 @@ if(collections['today']) {
                             <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['3days']">
                                     <div class="font-semibold">Collection «{{ collections['3days'].title }}»</div>
-                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['3days'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + wordsets['3days'].id_puzzle_english }}</a>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['3days'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + wordsets['3days'].id_puzzle_english + '&shuffle' }}</a>
                                 </template>
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
@@ -203,7 +203,7 @@ if(collections['today']) {
                             <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['1day']">
                                     <div class="font-semibold">Collection «{{ collections['1day'].title }}»</div>
-                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['1day'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['1day'].id_puzzle_english }}</a>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['1day'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['1day'].id_puzzle_english + '&shuffle' }}</a>
                                 </template>
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
@@ -241,7 +241,7 @@ if(collections['today']) {
                             <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['today']">
                                     <div class="font-semibold">Collection «{{ collections['today'].title }}»</div>
-                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english }}</a>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english + '&shuffle' }}</a>
                                 </template>
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
@@ -260,7 +260,7 @@ if(collections['today']) {
                             <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
                                 <template v-if="collections['today']">
                                     <div class="font-semibold">Collection «{{ collections['today'].title }}»</div>
-                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english }}</a>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['today'].id_puzzle_english + '&shuffle' }}</a>
                                 </template>
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>

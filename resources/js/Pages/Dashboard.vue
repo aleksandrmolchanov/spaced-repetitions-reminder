@@ -162,7 +162,7 @@ if(collections['today']) {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
                     <div class="flex flex-col gap-y-4">
-                        <div :class="collections['90days'] ? collections['90days'].repeat_90days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                        <div v-if="collections['90days']" :class="collections['90days'] ? collections['90days'].repeat_90days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 90 days</div>
                                 <template v-if="collections['90days']">
@@ -181,7 +181,7 @@ if(collections['today']) {
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
                         </div>
-                        <div :class="collections['30days'] ? collections['30days'].repeat_30days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                        <div v-if="collections['30days']" :class="collections['30days'] ? collections['30days'].repeat_30days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 30 days</div>
                                 <template v-if="collections['30days']">
@@ -200,7 +200,7 @@ if(collections['today']) {
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
                         </div>
-                        <div :class="collections['16days'] ? collections['16days'].repeat_16days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                        <div v-if="collections['16days']" :class="collections['16days'] ? collections['16days'].repeat_16days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 16 days</div>
                                 <template v-if="collections['16days']">
@@ -219,7 +219,7 @@ if(collections['today']) {
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
                         </div>
-                        <div :class="collections['7days'] ? collections['7days'].repeat_7days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                        <div v-if="collections['7days']" :class="collections['7days'] ? collections['7days'].repeat_7days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 7 days</div>
                                 <template v-if="collections['7days']">
@@ -238,7 +238,7 @@ if(collections['today']) {
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
                         </div>
-                        <div :class="collections['3days'] ? collections['3days'].repeat_3days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                        <div v-if="collections['3days']" :class="collections['3days'] ? collections['3days'].repeat_3days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 3 days</div>
                                 <template v-if="collections['3days']">
@@ -257,7 +257,7 @@ if(collections['today']) {
                                 <div v-else class="text-gray-600">Nothing</div>
                             </div>
                         </div>
-                        <div :class="collections['1day'] ? collections['1day'].repeat_1day ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="bg-blue-200 rounded-lg px-4 py-3 w-full">
+                        <div v-if="collections['1day']" :class="collections['1day'] ? collections['1day'].repeat_1day ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="bg-blue-200 rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 1 day</div>
                                 <template v-if="collections['1day']">

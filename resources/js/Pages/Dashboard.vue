@@ -6,6 +6,36 @@ import { Head, router } from '@inertiajs/vue3';
 const props = defineProps(['wordsets', 'today'])
 const collections = reactive(props.wordsets)
 
+if(collections['90days']) {
+    watch(
+        () => collections['90days'].repeat_90days,
+        (value) => {
+            router.patch(route('wordset', {id: collections['90days'].id}), {
+                step: '90days',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+        }
+    )
+}
+
+if(collections['30days']) {
+    watch(
+        () => collections['30days'].repeat_16days,
+        (value) => {
+            router.patch(route('wordset', {id: collections['30days'].id}), {
+                step: '30days',
+                value
+            }, {
+                preserveState: true,
+                preserveScroll: true
+            })
+        }
+    )
+}
+
 if(collections['16days']) {
     watch(
         () => collections['16days'].repeat_16days,
@@ -132,6 +162,44 @@ if(collections['today']) {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
                     <div class="flex flex-col gap-y-4">
+                        <div :class="collections['90days'] ? collections['90days'].repeat_90days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                            <div class="flex items-center gap-x-4">
+                                <div class="">Repeat after 90 days</div>
+                                <template v-if="collections['90days']">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input v-model="collections['90days'].repeat_90days" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+                                    </label>
+                                    <div v-if="collections['90days'].repeat_90days">Done</div>
+                                </template>
+                            </div>
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
+                                <template v-if="collections['90days']">
+                                    <div class="font-semibold">Collection «{{ collections['90days'].title }}»</div>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['90days'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['90days'].id_puzzle_english + '&shuffle' }}</a>
+                                </template>
+                                <div v-else class="text-gray-600">Nothing</div>
+                            </div>
+                        </div>
+                        <div :class="collections['30days'] ? collections['30days'].repeat_30days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
+                            <div class="flex items-center gap-x-4">
+                                <div class="">Repeat after 30 days</div>
+                                <template v-if="collections['30days']">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input v-model="collections['30days'].repeat_30days" type="checkbox" :true-value="1" :false-value="0" value="" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+                                    </label>
+                                    <div v-if="collections['30days'].repeat_30days">Done</div>
+                                </template>
+                            </div>
+                            <div class="mt-4 flex flex-col lg:flex-row gap-x-4 gap-y-1">
+                                <template v-if="collections['30days']">
+                                    <div class="font-semibold">Collection «{{ collections['30days'].title }}»</div>
+                                    <a class="hover:underline" :href="'https://puzzle-english.com/change-my-dictionary?set=' + collections['30days'].id_puzzle_english + '&shuffle'" target="_blank">{{ 'https://puzzle-english.com/change-my-dictionary?set=' + collections['30days'].id_puzzle_english + '&shuffle' }}</a>
+                                </template>
+                                <div v-else class="text-gray-600">Nothing</div>
+                            </div>
+                        </div>
                         <div :class="collections['16days'] ? collections['16days'].repeat_16days ? 'bg-gray-100' : 'bg-blue-200' : 'bg-gray-100'" class="rounded-lg px-4 py-3 w-full">
                             <div class="flex items-center gap-x-4">
                                 <div class="">Repeat after 16 days</div>

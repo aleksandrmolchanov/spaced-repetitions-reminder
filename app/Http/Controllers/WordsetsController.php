@@ -21,6 +21,8 @@ class WordsetsController extends Controller
                 '3days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(4)->toDateString())->first(),
                 '7days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(11)->toDateString())->first(),
                 '16days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(27)->toDateString())->first(),
+                '30days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(57)->toDateString())->first(),
+                '90days' => DB::table('wordsets')->where('user_id', auth()->user()->id)->whereDate('learnt_at', now()->subDays(147)->toDateString())->first(),
             ]
         ]);
     }
